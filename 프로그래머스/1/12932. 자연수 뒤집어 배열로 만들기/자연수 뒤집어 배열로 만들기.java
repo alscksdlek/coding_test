@@ -4,7 +4,6 @@ class Solution {
         long n2 = n;
         
         while(n != 0){
-            long t = n % 10;
             n = n / 10;
             count ++;
         }
