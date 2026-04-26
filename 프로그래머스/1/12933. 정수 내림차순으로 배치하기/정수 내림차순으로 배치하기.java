@@ -1,17 +1,30 @@
+import java.util.Arrays;
+
 class Solution {
     public long solution(long n) {
-        String[] str = Long.toString(n).split("");
-        for(int i = 0; i <str.length;i++){
-            for(int j = i + 1; j <str.length;j++){
-                if(Integer.parseInt(str[i]) < Integer.parseInt(str[j])){
-                    String t = str[i];
-                    str[i] = str[j];
-                    str[j] = t;
-                }
-            }
+        long n2 = n;
+        int count = 0;
+
+        while (n != 0) {
+            n = n / 10;
+            count++;
         }
-        String str2 = String.join("", str);
-        n = Long.parseLong(str2);
-        return n;
+
+        long[] array = new long[count];
+
+        for (int i = 0; i < array.length; i++) {
+            array[i] = n2 % 10;
+            n2 = n2 / 10;
+        }
+
+        Arrays.sort(array); 
+
+        long answer = 0;
+
+        for (int i = array.length - 1; i >= 0; i--) {
+            answer = answer * 10 + array[i];
+        }
+
+        return answer;
     }
 }
